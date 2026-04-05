@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "before-after",
+      "heading": "Before & after",
+      "items": [
+        { "src": "../assets/smile-gallery/ba1-sachdev.JPG", "alt": "Implant", "caption": "Implant" },
+        { "src": "../assets/smile-gallery/ba2-sachdev.JPG", "alt": "Implant", "caption": "Implant" },
+        { "src": "../assets/smile-gallery/ba3-sachdev.JPG", "alt": "Invisalign and Zoom whitening", "caption": "Invisalign and Zoom whitening" },
+        { "src": "../assets/smile-gallery/sachdev1.jpg", "alt": "Complete Dentures", "caption": "Complete Dentures" },
+        { "src": "../assets/smile-gallery/sachdevb1.jpg", "alt": "Zoom whitening", "caption": "Zoom whitening" },
+        { "src": "../assets/smile-gallery/basach1.jpg", "alt": "Cosmetic Dentistry", "caption": "Cosmetic Dentistry" }
+      ]
+    },
+    {
+      "id": "happy-patients",
+      "heading": "Our happy patients",
+      "items": [
+        { "src": "../assets/smile-gallery/IMG_1007.JPG", "alt": "Happy patient smile", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/sach1.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/sach2.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/sach3.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/sach5.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/1111111111.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/22222222222.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/33333333333333.jpg", "alt": "Patient smile result", "caption": "Happy patients" },
+        { "src": "../assets/smile-gallery/444444444444.jpg", "alt": "Patient smile result", "caption": "Happy patients" }
+      ]
+    }
+  ]
+}

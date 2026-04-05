@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo options — Ultimate Smile Dental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,450&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue:#6d8a9e; --blue-dk:#556f80; --blue-lt:#eef3f6;
+      --teal:#7a9e94; --teal-lt:#e8f1ee;
+      --cream:#f6f7f5; --dark:#3f4549; --gray:#6d7378;
+      --border:#e4e6e3; --white:#fcfcfb;
+      --ring:rgba(63,69,73,.06);
+      --shadow-soft:0 8px 32px rgba(109,138,158,.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 2rem clamp(1rem, 4vw, 2rem); font-family: 'DM Sans', system-ui, sans-serif; color: var(--dark); background: var(--cream); line-height: 1.6; }
+    h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.5rem, 3vw, 1.85rem); font-weight: 600; margin: 0 0 .5rem; letter-spacing: -0.02em; }
+    .intro { color: var(--gray); max-width: 42rem; margin: 0 0 2rem; font-size: .95rem; }
+    .intro code { font-size: .85em; background: rgba(109,138,158,.08); padding: .15rem .4rem; border-radius: 4px; }
+    .opt { margin-bottom: 2rem; padding: 1.35rem 1.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-soft); }
+    .opt h2 { font-family: 'Cormorant Garamond', Georgia, serif; margin: 0 0 .35rem; font-size: 1.2rem; font-weight: 600; color: var(--dark); }
+    .opt .tag { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin-bottom: .5rem; }
+    .opt p { margin: 0 0 1rem; color: var(--gray); font-size: .88rem; }
+    .mock-nav {
+      display: flex; align-items: center; padding: 1rem 1.25rem;
+      background: rgba(252,252,251,.88); backdrop-filter: saturate(1.2) blur(12px);
+      border: 1px solid rgba(228,230,227,.85); border-radius: 14px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0; text-decoration: none; flex-shrink: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="logo-variants.css" />
+</head>
+<body>
+  <h1>Logo frame options</h1>
+  <p class="intro">
+    The header shows the full <strong>bottom-right</strong> lockup (scaled, not cropped) from <code>assets/logo-brand.png</code>, plus a teal smile curve. Set <code>data-logo</code> on <code>&lt;nav&gt;</code> in <code>index.html</code> to
+    <code>a</code>, <code>b</code>, or <code>c</code> for the frame style. Styles live in <code>logo-variants.css</code>.
+  </p>
+
+  <div class="opt">
+    <div class="tag">Option A · data-logo=&quot;a&quot;</div>
+    <h2>Luminous</h2>
+    <p>Soft shadow and lift on hover. Default on the live site.</p>
+    <div class="mock-nav">
+      <nav aria-label="Preview A" data-logo="a">
+        <a href="#" class="logo" onclick="return false;" aria-label="Ultimate Smile Dental">
+          <span class="logo-img-wrap" aria-hidden="true"><span class="logo-sprite-inner"></span></span>
+          <svg class="logo-smile" width="56" height="12" viewBox="0 0 56 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6 Q28 13 52 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="opt">
+    <div class="tag">Option B · data-logo=&quot;b&quot;</div>
+    <h2>Editorial</h2>
+    <p>Flat, thin border—calm and understated.</p>
+    <div class="mock-nav">
+      <nav aria-label="Preview B" data-logo="b">
+        <a href="#" class="logo" onclick="return false;" aria-label="Ultimate Smile Dental">
+          <span class="logo-img-wrap" aria-hidden="true"><span class="logo-sprite-inner"></span></span>
+          <svg class="logo-smile" width="56" height="12" viewBox="0 0 56 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6 Q28 13 52 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="opt">
+    <div class="tag">Option C · data-logo=&quot;c&quot;</div>
+    <h2>Seal</h2>
+    <p>Pill-shaped frame with a teal ring—reads like a trust mark.</p>
+    <div class="mock-nav">
+      <nav aria-label="Preview C" data-logo="c">
+        <a href="#" class="logo" onclick="return false;" aria-label="Ultimate Smile Dental">
+          <span class="logo-img-wrap" aria-hidden="true"><span class="logo-sprite-inner"></span></span>
+          <svg class="logo-smile" width="56" height="12" viewBox="0 0 56 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6 Q28 13 52 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <p class="intro" style="margin-bottom:0">Current site default: <code>data-logo=&quot;a&quot;</code> on <code>&lt;nav&gt;</code> in <code>index.html</code>.</p>
+</body>
+</html>

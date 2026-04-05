@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smile gallery manager — Ultimate Smile Dental</title>
+  <style>
+    :root { --bg:#f4f6f4; --card:#fff; --text:#2d3338; --muted:#5c646b; --accent:#6d8a9e; --border:#e0e4e1; --err:#b45309; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 1.25rem; background: var(--bg); color: var(--text); line-height: 1.5; max-width: 920px; margin-inline: auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 .5rem; }
+    .lead { color: var(--muted); font-size: .92rem; margin: 0 0 1.25rem; }
+    .warn { background: #fff8e6; border: 1px solid #f5e0a8; color: var(--err); padding: .75rem 1rem; border-radius: 10px; font-size: .86rem; margin-bottom: 1.25rem; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.25rem; align-items: center; }
+    button, .file-btn label { cursor: pointer; font: inherit; }
+    button { padding: .45rem .9rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+    button.primary { background: var(--accent); color: #fff; border-color: transparent; }
+    button.danger { color: #b91c1c; border-color: #fecaca; background: #fff; }
+    .file-btn input { position: absolute; width: 0; height: 0; opacity: 0; }
+    .file-btn label { display: inline-block; padding: .45rem .9rem; border-radius: 8px; border: 1px dashed var(--accent); color: var(--accent); background: #fff; }
+    section.block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    section.block h2 { font-size: 1.05rem; margin: 0 0 .75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+    .sec-head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+    .sec-head input[type="text"] { flex: 1; min-width: 200px; padding: .4rem .6rem; border: 1px solid var(--border); border-radius: 6px; }
+    .item { border: 1px solid var(--border); border-radius: 10px; padding: .75rem; margin-bottom: .65rem; background: #fafbfa; }
+    .item-row { display: grid; gap: .5rem; margin-bottom: .5rem; }
+    @media (min-width: 640px) { .item-row.cols-2 { grid-template-columns: 1fr 1fr; } }
+    label { font-size: .78rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: .2rem; }
+    input[type="text"], input[type="url"], textarea { width: 100%; padding: .4rem .55rem; border: 1px solid var(--border); border-radius: 6px; font: inherit; }
+    textarea { min-height: 52px; resize: vertical; }
+    .item-actions { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+    .item-actions button { font-size: .82rem; padding: .3rem .55rem; }
+    .thumb { max-width: 120px; max-height: 90px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); background: #eee; }
+    .meta { font-size: .78rem; color: var(--muted); margin-top: .35rem; }
+    footer { margin-top: 2rem; font-size: .8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1>Smile gallery manager</h1>
+  <p class="lead">Add or reorder photos, then export <strong>gallery.json</strong> and any new image files into your <code>gallery/</code> folder. Replace the existing <code>gallery/gallery.json</code> on your site and upload images to <code>gallery/images/</code>.</p>
+  <p class="warn"><strong>Local use only.</strong> Do not publish this page to the public web without password protection or your server’s admin panel.</p>
+
+  <div class="toolbar">
+    <button type="button" class="primary" id="btnAddSection">+ Section</button>
+    <span class="file-btn">
+      <label><input type="file" id="importJson" accept=".json,application/json" /> Import gallery.json</label>
+    </span>
+    <button type="button" id="btnExportJson">Download gallery.json</button>
+    <button type="button" id="btnExportImages">Download new image files</button>
+  </div>
+
+  <div id="sections"></div>
+
+  <footer>
+    Paths in JSON for images you upload should look like <code>images/yourfile.jpg</code> (inside the <code>gallery/</code> folder). Remote URLs (https://…) are copied as-is.
+  </footer>
+
+  <script>
+(function () {
+  var state = { version: 1, sections: [] };
+
+  function el(tag, attrs, children) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'text') n.textContent = attrs[k];
+      else if (k === 'html') n.innerHTML = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+
+  function sanitizeFilename(name) {
+    return String(name || 'image.jpg').replace(/[^a-zA-Z0-9._-]/g, '_')
+      .replace(/_+/g, '_').replace(/^\./, '') || 'image.jpg';
+  }
+
+  function render() {
+    var root = document.getElementById('sections');
+    root.innerHTML = '';
+    state.sections.forEach(function (sec, si) {
+      var secEl = el('section', { class: 'block' });
+      var h2 = el('h2');
+      h2.appendChild(document.createTextNode('Section ' + (si + 1)));
+      var hRemove = el('button', { type: 'button', class: 'danger' });
+      hRemove.textContent = 'Remove section';
+      hRemove.onclick = function () {
+        if (confirm('Remove this section and all its photos?')) {
+          state.sections.splice(si, 1);
+          render();
+        }
+      };
+      h2.appendChild(hRemove);
+      secEl.appendChild(h2);
+
+      var head = el('div', { class: 'sec-head' });
+      var inpHeading = el('input', { type: 'text', placeholder: 'Section heading (e.g. Before & after)' });
+      inpHeading.value = sec.heading || '';
+      inpHeading.oninput = function () { sec.heading = inpHeading.value; };
+      head.appendChild(inpHeading);
+      secEl.appendChild(head);
+
+      var addBtn = el('button', { type: 'button', class: 'primary' });
+      addBtn.textContent = '+ Add photo';
+      addBtn.onclick = function () {
+        sec.items.push({ src: '', alt: 'Smile gallery photo', caption: '', _localFile: null });
+        render();
+      };
+      secEl.appendChild(addBtn);
+
+      (sec.items || []).forEach(function (item, ii) {
+        var itemEl = el('div', { class: 'item' });
+        var preview = null;
+        if (item._localFile && item._localFile instanceof File) {
+          preview = el('img', { class: 'thumb', alt: '' });
+          preview.src = URL.createObjectURL(item._localFile);
+        } else if (item.src && /^https?:\/\//i.test(item.src.trim())) {
+          preview = el('img', { class: 'thumb', alt: '', src: item.src.trim() });
+        } else if (item.src && item.src.trim()) {
+          preview = el('img', { class: 'thumb', alt: '', src: item.src.trim() });
+        }
+
+        var row1 = el('div', { class: 'item-row cols-2' });
+        var cellSrc = el('div');
+        cellSrc.appendChild(el('label', { text: 'Image URL (or use file below)' }));
+        var inpSrc = el('input', { type: 'url', placeholder: 'https://… or images/photo.jpg' });
+        inpSrc.value = item._localFile ? ('images/' + sanitizeFilename(item._localFile.name)) : (item.src || '');
+        inpSrc.readOnly = !!item._localFile;
+        inpSrc.oninput = function () { item.src = inpSrc.value.trim(); item._localFile = null; render(); };
+        cellSrc.appendChild(inpSrc);
+
+        var cellFile = el('div');
+        cellFile.appendChild(el('label', { text: 'Or upload file' }));
+        var fi = el('input', { type: 'file', accept: 'image/*' });
+        fi.onchange = function () {
+          var f = fi.files && fi.files[0];
+          if (!f) return;
+          item._localFile = f;
+          item.src = 'images/' + sanitizeFilename(f.name);
+          render();
+        };
+        cellFile.appendChild(fi);
+
+        row1.appendChild(cellSrc);
+        row1.appendChild(cellFile);
+        itemEl.appendChild(row1);
+
+        if (preview) {
+          var pr = el('div');
+          pr.appendChild(preview);
+          itemEl.appendChild(pr);
+        }
+
+        var row2 = el('div', { class: 'item-row cols-2' });
+        var cellAlt = el('div');
+        cellAlt.appendChild(el('label', { text: 'Alt text (accessibility)' }));
+        var inpAlt = el('input', { type: 'text' });
+        inpAlt.value = item.alt || '';
+        inpAlt.oninput = function () { item.alt = inpAlt.value; };
+        cellAlt.appendChild(inpAlt);
+
+        var cellCap = el('div');
+        cellCap.appendChild(el('label', { text: 'Caption' }));
+        var inpCap = el('input', { type: 'text' });
+        inpCap.value = item.caption || '';
+        inpCap.oninput = function () { item.caption = inpCap.value; };
+        cellCap.appendChild(inpCap);
+        row2.appendChild(cellAlt);
+        row2.appendChild(cellCap);
+        itemEl.appendChild(row2);
+
+        if (item._localFile) {
+          itemEl.appendChild(el('div', { class: 'meta', text: 'Will save as: gallery/' + item.src }));
+        }
+
+        var actions = el('div', { class: 'item-actions' });
+        var up = el('button', { type: 'button' }); up.textContent = 'Move up';
+        up.onclick = function () { if (ii > 0) { var t = sec.items[ii-1]; sec.items[ii-1] = sec.items[ii]; sec.items[ii] = t; render(); } };
+        var down = el('button', { type: 'button' }); down.textContent = 'Move down';
+        down.onclick = function () { if (ii < sec.items.length - 1) { var t = sec.items[ii+1]; sec.items[ii+1] = sec.items[ii]; sec.items[ii] = t; render(); } };
+        var del = el('button', { type: 'button', class: 'danger' }); del.textContent = 'Remove';
+        del.onclick = function () { sec.items.splice(ii, 1); render(); };
+        actions.appendChild(up); actions.appendChild(down); actions.appendChild(del);
+        itemEl.appendChild(actions);
+
+        secEl.appendChild(itemEl);
+      });
+
+      sec.items = sec.items || [];
+      root.appendChild(secEl);
+    });
+  }
+
+  document.getElementById('btnAddSection').onclick = function () {
+    state.sections.push({ id: 'section-' + Date.now(), heading: 'New section', items: [] });
+    render();
+  };
+
+  document.getElementById('importJson').onchange = function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(reader.result);
+        state.version = data.version || 1;
+        state.sections = Array.isArray(data.sections)
+          ? data.sections.map(function (s) {
+              return {
+                id: s.id || 'section-' + Math.random().toString(36).slice(2, 10),
+                heading: s.heading || '',
+                items: (s.items || []).map(function (it) {
+                  return { src: it.src || '', alt: it.alt || '', caption: it.caption || '', width: it.width, height: it.height, _localFile: null };
+                })
+              };
+            })
+          : [];
+        render();
+      } catch (err) {
+        alert('Could not parse JSON: ' + err.message);
+      }
+    };
+    reader.readAsText(f);
+    e.target.value = '';
+  };
+
+  function buildExportJson() {
+    var out = { version: state.version || 1, sections: [] };
+    state.sections.forEach(function (sec) {
+      var secOut = { id: sec.id || ('section-' + Math.random().toString(36).slice(2, 9)), heading: sec.heading || 'Gallery', items: [] };
+      (sec.items || []).forEach(function (it) {
+        if (!it.src || !String(it.src).trim()) return;
+        var o = { src: String(it.src).trim(), alt: it.alt || 'Smile gallery photo', caption: it.caption || '' };
+        if (it.width) o.width = it.width;
+        if (it.height) o.height = it.height;
+        secOut.items.push(o);
+      });
+      out.sections.push(secOut);
+    });
+    return out;
+  }
+
+  document.getElementById('btnExportJson').onclick = function () {
+    var out = buildExportJson();
+    var blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'gallery.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  document.getElementById('btnExportImages').onclick = function () {
+    var delay = 0;
+    state.sections.forEach(function (sec) {
+      (sec.items || []).forEach(function (it) {
+        if (it._localFile && it._localFile instanceof File) {
+          setTimeout(function () {
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(it._localFile);
+            a.download = sanitizeFilename(it._localFile.name);
+            a.click();
+            URL.revokeObjectURL(a.href);
+          }, delay);
+          delay += 350;
+        }
+      });
+    });
+    if (delay === 0) alert('No new uploaded files to download. Use “Add photo” and choose a file, or export gallery.json only.');
+  };
+
+  function loadDefault() {
+    fetch('gallery.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.sections) {
+          state.version = data.version || 1;
+          state.sections = data.sections.map(function (s) {
+            return {
+              id: s.id || 'section-' + Math.random().toString(36).slice(2, 10),
+              heading: s.heading || '',
+              items: (s.items || []).map(function (it) {
+                return { src: it.src || '', alt: it.alt || '', caption: it.caption || '', width: it.width, height: it.height, _localFile: null };
+              })
+            };
+          });
+        } else {
+          state.sections = [
+            { id: 'before-after', heading: 'Before & after', items: [] },
+            { id: 'happy-patients', heading: 'Our happy patients', items: [] }
+          ];
+        }
+        render();
+      })
+      .catch(function () {
+        state.sections = [
+          { id: 'before-after', heading: 'Before & after', items: [] },
+          { id: 'happy-patients', heading: 'Our happy patients', items: [] }
+        ];
+        render();
+      });
+  }
+
+  loadDefault();
+})();
+  </script>
+</body>
+</html>

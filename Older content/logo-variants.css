@@ -1,0 +1,128 @@
+/**
+ * Nav logo — Ultimate Smile Dental 2×2 sheet (assets/logo-brand.png).
+ * Bottom-right quadrant scaled to fit (full tooth + wordmark, no crop).
+ * Teal smile curve under the mark. Frame: <nav data-logo="a"> | "b" | "c">
+ */
+
+nav a.logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav a.logo:hover {
+  transform: translateY(-1px);
+}
+
+nav a.logo:hover .logo-smile {
+  opacity: 1;
+  color: var(--blue-dk);
+}
+
+nav a.logo:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* Full quadrant: inner 200×200 sprite, scaled down so nothing is clipped */
+nav a.logo .logo-img-wrap {
+  display: block;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+nav a.logo .logo-sprite-inner {
+  display: block;
+  width: 200px;
+  height: 200px;
+  transform: scale(0.38);
+  transform-origin: top left;
+  background-image: url("assets/logo-brand.png");
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 200% 200%;
+  pointer-events: none;
+}
+
+nav a.logo .logo-smile {
+  display: block;
+  flex-shrink: 0;
+  width: 56px;
+  height: 12px;
+  color: var(--teal);
+  opacity: 0.92;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* A — Luminous */
+nav[data-logo="a"] a.logo .logo-img-wrap {
+  box-shadow: 0 2px 14px rgba(109, 138, 158, 0.18), 0 0 0 1px rgba(122, 158, 148, 0.12);
+}
+
+nav[data-logo="a"] a.logo:hover .logo-img-wrap {
+  box-shadow: 0 6px 22px rgba(109, 138, 158, 0.22), 0 0 0 1px rgba(122, 158, 148, 0.2);
+}
+
+/* B — Editorial */
+nav[data-logo="b"] a.logo .logo-img-wrap {
+  box-shadow: none;
+  border: 1px solid rgba(122, 158, 148, 0.35);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+nav[data-logo="b"] a.logo:hover .logo-img-wrap {
+  border-color: rgba(85, 111, 128, 0.45);
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* C — Seal */
+nav[data-logo="c"] a.logo .logo-img-wrap {
+  border-radius: 999px;
+  border: 2px solid var(--teal);
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 18px rgba(122, 158, 148, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+nav[data-logo="c"] a.logo:hover .logo-img-wrap {
+  border-color: var(--blue-dk);
+  box-shadow: 0 6px 24px rgba(109, 138, 158, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 420px) {
+  nav a.logo .logo-img-wrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  nav a.logo .logo-sprite-inner {
+    transform: scale(0.32);
+  }
+
+  nav a.logo .logo-smile {
+    width: 48px;
+    height: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav a.logo,
+  nav a.logo .logo-img-wrap,
+  nav a.logo .logo-smile {
+    transition: none;
+  }
+
+  nav a.logo:hover {
+    transform: none;
+  }
+}

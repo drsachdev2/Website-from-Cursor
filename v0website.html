@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#4a86b8" />
+  <meta name="description" content="Ultimate Smile Dental — family &amp; cosmetic dentistry in West Hempstead, NY. Dr. Ashu Sachdev, DDS. Call (516) 485-9675." />
+  <title>Ultimate Smile Dental | Dr. Ashu Sachdev, DDS | West Hempstead, NY</title>
+  <link rel="icon" href="assets/logo-ultimate-smile.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Serene spa-inspired: soft sage, warm cream, airy neutrals */
+      --bg: #faf9f7;
+      --bg-muted: #f3f5f3;
+      --bg-subtle: #eef1ee;
+      --border: #dfe6e1;
+      --text: #355f8a;
+      --text-muted: #4a7399;
+      --text-soft: #5c85a8;
+      --link: #4a86b8;
+      --link-hover: #3a6fa0;
+      --primary: #7a9185;
+      --primary-hover: #5f7569;
+      --primary-foreground: #fafcf9;
+      --accent-mist: #e8eeea;
+      --ring: rgba(90, 117, 105, 0.22);
+      --radius: 14px;
+      --radius-lg: 20px;
+      --shadow: 0 2px 12px rgba(58, 66, 63, 0.06);
+      --shadow-md: 0 8px 32px rgba(58, 66, 63, 0.08);
+      --shadow-lg: 0 16px 48px rgba(58, 66, 63, 0.09);
+      --header-h: 72px;
+      --topbar-h: 40px;
+      /* Fixed topbar + header: anchor links scroll so section tops sit just below the menu */
+      --anchor-offset: calc(var(--topbar-h) + var(--header-h) + 12px);
+      /* Hero: lighter blue copy + pale aqua letterboxing */
+      --hero-font: #4a7399;
+      --hero-font-accent: #355f8a;
+      --hero-aqua: #e8f6fc;
+    }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    /* Fragment / in-page links: align section tops with the gap below the fixed topbar + header */
+    main#main,
+    main > section[id] {
+      scroll-margin-top: var(--anchor-offset);
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 238, 234, 0.9) 0%, transparent 55%), linear-gradient(180deg, #f7f6f3 0%, var(--bg) 35%, #faf9f7 100%);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    h1, h2, h3, .font-display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+    a { color: var(--link); }
+    a:hover { color: var(--link-hover); }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; z-index: 500;
+      padding: 0.75rem 1.25rem; background: #2d4f6e; color: #fff; font-weight: 600; border-radius: 0 0 8px 0; text-decoration: none;
+    }
+    .skip-link:focus { left: max(0px, env(safe-area-inset-left)); top: max(0px, env(safe-area-inset-top)); }
+
+    /* Top announcement */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 400;
+      min-height: var(--topbar-h);
+      display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1rem;
+      padding: 0.45rem max(1rem, env(safe-area-inset-left)) 0.45rem max(1rem, env(safe-area-inset-right));
+      padding-top: max(0.45rem, env(safe-area-inset-top));
+      background: linear-gradient(90deg, var(--accent-mist) 0%, #f4f7f4 50%, var(--accent-mist) 100%);
+      border-bottom: 1px solid rgba(122, 145, 133, 0.2);
+      font-size: 0.8125rem; font-weight: 500; color: var(--text);
+    }
+    .topbar strong { font-weight: 700; }
+    .topbar a { color: var(--link); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(12, 74, 110, 0.35); }
+    .topbar a:hover { border-bottom-color: var(--link-hover); }
+    @media (max-width: 480px) {
+      .topbar {
+        font-size: 0.75rem;
+        line-height: 1.45;
+        padding-left: max(0.65rem, env(safe-area-inset-left));
+        padding-right: max(0.65rem, env(safe-area-inset-right));
+      }
+      /* Topbar line can wrap on narrow phones; extra offset keeps section tops clear of the fixed bars */
+      :root {
+        --anchor-offset: calc(var(--topbar-h) + var(--header-h) + 12px + 1.25rem);
+      }
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed; top: var(--topbar-h); left: 0; right: 0; z-index: 300;
+      height: var(--header-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 max(1rem, env(safe-area-inset-left), 4vw) 0 max(1rem, env(safe-area-inset-right), 4vw);
+      background: rgba(250, 249, 247, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text);
+      max-width: min(100%, 425px);
+    }
+    .logo:hover { color: var(--link); }
+    .logo:hover .logo-text { color: inherit; }
+    .logo-img {
+      height: 55px;
+      width: auto;
+      max-width: min(52vw, 250px);
+      flex-shrink: 0;
+      object-fit: contain;
+      display: block;
+    }
+    .logo-text {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .nav-desktop {
+      display: flex; align-items: center; gap: 0.15rem;
+    }
+    .nav-desktop a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.65rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-desktop a:hover { color: var(--text); background: var(--bg-subtle); }
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: linear-gradient(165deg, #8a9e92 0%, var(--primary-hover) 100%);
+      color: var(--primary-foreground);
+      box-shadow: 0 2px 8px var(--ring);
+    }
+    .btn-primary:hover { filter: brightness(0.96); color: #fff; transform: translateY(-1px); box-shadow: 0 6px 20px var(--ring); }
+    .btn, .hamburger, .hero-phone-link, .hero-maps-link a {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(122, 145, 133, 0.15);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--link);
+      border-color: rgba(12, 74, 110, 0.35);
+    }
+    .btn-outline:hover { background: var(--accent-mist); }
+    .btn-lg { padding: 0.65rem 1.35rem; font-size: 0.875rem; }
+    .btn-block { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px;
+      border: none; background: transparent; border-radius: 10px; cursor: pointer;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; margin: 0 auto; }
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: calc(var(--topbar-h) + var(--header-h));
+      left: 0; right: 0;
+      bottom: 0;
+      background: var(--bg);
+      z-index: 299;
+      padding: 1rem max(1.25rem, env(safe-area-inset-left)) max(2rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-right));
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      border-top: 1px solid var(--border);
+    }
+    .mobile-drawer.open { display: block; }
+    .mobile-drawer a {
+      display: block;
+      padding: 0.95rem 0;
+      min-height: 2.75rem;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-drawer .btn-primary { margin-top: 1rem; text-align: center; }
+
+    @media (max-width: 900px) {
+      .nav-desktop { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 400px) {
+      .logo { gap: 0.45rem; }
+      .logo-img { height: 48px; }
+      .logo-text { font-size: clamp(0.8rem, 4vw, 1rem); }
+    }
+
+    /* Sections */
+    section { padding: 5rem max(1.25rem, 5vw, env(safe-area-inset-left)) 5rem max(1.25rem, 5vw, env(safe-area-inset-right)); }
+    @media (max-width: 600px) { section { padding: 3.25rem max(1rem, 4vw, env(safe-area-inset-left)) 3.25rem max(1rem, 4vw, env(safe-area-inset-right)); } }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--link);
+      margin-bottom: 0.65rem;
+    }
+    .section-head { max-width: 640px; margin-bottom: 2.5rem; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-head.center .section-sub { margin-left: auto; margin-right: auto; }
+    h2.section-title,
+    h3.section-title {
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.65; }
+
+    /* Hero — full-bleed background video + scrim + content */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: calc(var(--topbar-h) + var(--header-h) + 2.5rem);
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+      min-height: min(91vh, 1066px);
+    }
+    @media (max-width: 900px) {
+      .hero {
+        min-height: min(88vh, 920px);
+        min-height: min(88svh, 920px);
+        padding-bottom: 2.5rem;
+      }
+    }
+    .hero-media-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      /* Letterboxing (sides or top/bottom): full frame visible; bars = pale aqua */
+      background: var(--hero-aqua);
+    }
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+    .hero-bg-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      /* Light overlay only — does not hide top/bottom of the picture like heavy gradients */
+      background: linear-gradient(
+        180deg,
+        rgba(250, 249, 247, 0.38) 0%,
+        rgba(250, 249, 247, 0.12) 45%,
+        rgba(250, 249, 247, 0.06) 100%
+      );
+    }
+    .hero-center {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: max(1rem, env(safe-area-inset-left), 5vw);
+      padding-right: max(1rem, env(safe-area-inset-right), 5vw);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem 3rem;
+      box-sizing: border-box;
+    }
+    .hero-copy {
+      flex: 0 1 auto;
+      max-width: min(34ch, 46vw);
+      min-width: 0;
+      text-align: left;
+      margin-right: auto;
+      padding-right: clamp(0.75rem, 4vw, 2.5rem);
+    }
+    @media (max-width: 900px) {
+      .hero-copy {
+        max-width: min(22rem, 100%);
+      }
+    }
+    .hero-mainline {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--hero-font-accent);
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85), 0 0 28px rgba(250, 249, 247, 0.9), 0 2px 12px rgba(250, 249, 247, 0.75);
+    }
+    .hero-tagline {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      color: var(--hero-font);
+      margin: 0;
+      font-weight: 500;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 20px rgba(250, 249, 247, 0.85);
+    }
+    .hero-tagline em { font-style: italic; color: var(--hero-font-accent); }
+    .hero-center .hero-cta {
+      flex: 0 0 auto;
+      margin-left: auto;
+      padding-left: clamp(0.75rem, 4vw, 2.5rem);
+      max-width: min(100%, 26rem);
+    }
+    .hero-address-card {
+      text-align: right;
+    }
+    .hero-address-card .hero-address-label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--hero-font);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    .hero-address-card .hero-address-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1.21875rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--hero-font-accent);
+      font-style: normal;
+      margin: 0 0 0.5rem;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    .hero-address-card .hero-maps-link {
+      margin: 0 0 0.85rem;
+      font-size: 1.21875rem;
+      line-height: 1.4;
+    }
+    .hero-address-card .hero-maps-link a {
+      color: var(--hero-font-accent);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.15em;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    .hero-address-card .hero-maps-link a:hover {
+      color: var(--link-hover);
+    }
+    .hero-address-card .hero-phone-link {
+      display: inline-block;
+      font-size: 1.40625rem;
+      font-weight: 700;
+      color: var(--hero-font-accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    .hero-address-card .hero-phone-link:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+    @media (max-width: 640px) {
+      .hero {
+        min-height: min(82vh, 720px);
+        min-height: min(82svh, 720px);
+        padding-top: calc(var(--topbar-h) + var(--header-h) + 1.25rem);
+        padding-bottom: 1.5rem;
+      }
+      .hero-center {
+        flex-direction: column;
+        align-items: stretch;
+        padding-left: max(1rem, env(safe-area-inset-left), 5vw);
+        padding-right: max(1rem, env(safe-area-inset-right), 5vw);
+        gap: 1.5rem;
+      }
+      .hero-copy {
+        max-width: 100%;
+        padding-right: 0;
+        margin-right: 0;
+        text-align: left;
+      }
+      .hero-center .hero-cta {
+        align-self: stretch;
+        margin-left: 0;
+        padding-left: 0;
+        max-width: 100%;
+      }
+      .hero-address-card {
+        text-align: left;
+      }
+      .hero-address-card .hero-address-label {
+        font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
+      }
+      .hero-address-card .hero-address-text,
+      .hero-address-card .hero-maps-link {
+        font-size: clamp(1.05rem, 4vw, 1.21875rem);
+      }
+      .hero-address-card .hero-phone-link {
+        font-size: clamp(1.15rem, 4.5vw, 1.40625rem);
+      }
+    }
+
+    /* Services — list left, detail right */
+    #services { background: rgba(255, 255, 255, 0.6); }
+    .services-split {
+      display: grid;
+      grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+      gap: 2rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .services-nav { position: relative; }
+    .services-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .services-item:not(:last-child) { border-bottom: 1px solid var(--border); }
+    .services-nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.85rem 1rem;
+      min-height: 2.75rem;
+      font: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .services-nav-btn:hover { background: var(--bg-subtle); }
+    .services-nav-btn:focus-visible {
+      outline: none;
+      background: var(--bg-subtle);
+      box-shadow: inset 0 0 0 2px var(--link);
+    }
+    .services-nav-btn.is-active {
+      background: var(--accent-mist);
+      color: var(--link);
+      border-left-color: var(--link);
+    }
+    .services-detail-wrap {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.65rem 1.75rem;
+      min-height: 12rem;
+      box-shadow: var(--shadow);
+    }
+    .service-detail-block[hidden] { display: none !important; }
+    .service-detail-block .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--link);
+      margin-bottom: 0.65rem;
+    }
+    .service-detail-block h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      margin-bottom: 0.65rem;
+      color: var(--text);
+    }
+    .service-detail-block p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
+    }
+    .service-detail-block a.link-arrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--link);
+      text-decoration: none;
+    }
+    .service-detail-block a.link-arrow:hover { color: var(--link-hover); text-decoration: underline; }
+    @media (max-width: 720px) {
+      .services-split {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    /* Meet Dr. Sachdev */
+    #meet-dr-sachdev {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .meet-doctor-split {
+      display: grid;
+      grid-template-columns: minmax(220px, 380px) minmax(0, 1fr);
+      gap: 2.5rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .meet-doctor-photo {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-muted);
+    }
+    .meet-doctor-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .meet-doctor-body p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .meet-doctor-body p:last-child {
+      margin-bottom: 0;
+    }
+    @media (max-width: 820px) {
+      .meet-doctor-split {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      .meet-doctor-photo {
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Our Office */
+    #our-office { background: var(--bg-muted); border-top: 1px solid var(--border); }
+    .office-mosaic-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .office-mosaic {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 auto 0.75rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      max-width: 100%;
+    }
+    @media (min-width: 640px) {
+      .office-mosaic {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    .office-mosaic img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .office-photo-attrib {
+      font-size: 0.6875rem;
+      color: var(--text-soft);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      max-width: 52rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    /* Patient testimonials */
+    #testimonials { background: var(--bg); }
+    .review-hero {
+      background: linear-gradient(135deg, #f4f6f3 0%, var(--accent-mist) 100%);
+      border: 1px solid rgba(12, 74, 110, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .review-hero .stars { color: var(--link); font-size: 1.25rem; letter-spacing: 2px; margin: 0.5rem 0; }
+    .review-hero .big { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--text); }
+    .review-hero .sub { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; }
+    .review-actions {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+    .review-actions a { font-size: 0.8125rem; font-weight: 600; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px; background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .review-actions a:hover { border-color: var(--link); color: var(--link-hover); }
+    /* Testimonials — float layout matching ultimatesmile.us /testimonials/ */
+    .testimonials-mirror {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 max(0.25rem, env(safe-area-inset-left)) 0 max(0.25rem, env(safe-area-inset-right));
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .testimonials-mirror .testimonial-row {
+      overflow: hidden;
+      padding: 0.75rem 0;
+    }
+    .testimonials-mirror .testimonial-row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .testimonials-mirror .testimonial-figure {
+      margin: 0;
+    }
+    .testimonials-mirror .testimonial-figure img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 11px;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+    .testimonials-mirror .testimonial-row--img-left .testimonial-figure {
+      float: left;
+      max-width: min(100%, 420px);
+      margin-right: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .testimonials-mirror .testimonial-row--img-right .testimonial-figure {
+      float: right;
+      max-width: min(100%, 500px);
+      margin-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .testimonials-mirror .testimonial-body {
+      font-size: 1rem;
+    }
+    .testimonials-mirror .testimonial-body p {
+      margin: 0 0 0.5rem;
+    }
+    .testimonials-mirror .testimonial-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.25rem 0;
+    }
+    .testimonials-mirror .testimonial-row--text-then-img .testimonial-body {
+      margin-bottom: 0.75rem;
+    }
+    .testimonials-mirror .testimonial-row--text-then-img .testimonial-figure {
+      float: none;
+      text-align: center;
+      max-width: min(100%, 520px);
+      margin: 0.5rem auto 0;
+    }
+    .testimonials-mirror .testimonial-row--text-only {
+      padding: 1rem 0.25rem;
+    }
+    @media (max-width: 700px) {
+      .testimonials-mirror .testimonial-row--img-left .testimonial-figure,
+      .testimonials-mirror .testimonial-row--img-right .testimonial-figure {
+        float: none;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .testimonials-mirror .testimonial-figure img {
+        margin: 11px auto;
+      }
+    }
+
+    /* Smile gallery — at least one viewport tall when linked from the nav so the section feels “full” */
+    #smile-gallery {
+      background: var(--bg-muted);
+      border-top: 1px solid var(--border);
+      min-height: calc(100vh - var(--anchor-offset));
+      min-height: calc(100dvh - var(--anchor-offset));
+      padding-bottom: 2.5rem;
+    }
+    /* Continuation of gallery band; own section so #happy-patients hash scrolls reliably (not nested in #smile-gallery) */
+    #happy-patients {
+      background: var(--bg-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+    }
+    .smile-gallery-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .smile-gallery-group {
+      margin-top: 2.5rem;
+    }
+    .smile-gallery-group:first-of-type {
+      margin-top: 0;
+    }
+    /* “Our Happy Patients” block — visual band (section is top-level #happy-patients for correct in-page navigation) */
+    .smile-gallery-subsection {
+      margin-top: 0;
+      padding-top: 2.75rem;
+      border-top: none;
+      background: linear-gradient(180deg, var(--bg-subtle) 0%, transparent min(100%, 12rem));
+      border-radius: var(--radius-lg);
+      padding-left: clamp(0.5rem, 2vw, 1.25rem);
+      padding-right: clamp(0.5rem, 2vw, 1.25rem);
+      padding-bottom: 0.25rem;
+    }
+    .smile-gallery-subsection .section-head {
+      margin-bottom: 2.25rem;
+    }
+    .smile-gallery-subsection .section-sub {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(1rem, 2.2vw, 1.125rem);
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--text-muted);
+    }
+    .smile-gallery-heading {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .smile-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.5rem, 2vw, 1rem);
+    }
+    .smile-gallery-card {
+      margin: 0;
+      background: var(--bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .smile-gallery-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .smile-gallery-card figcaption {
+      padding: 0.55rem 0.75rem 0.7rem;
+      font-size: clamp(0.9375rem, 2.1vw, 1.0625rem);
+      font-weight: 500;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    /* Contact */
+    #contact {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-muted) 100%);
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 0.75rem; }
+    .info-list { list-style: none; margin: 1.5rem 0; }
+    .info-list li { margin-bottom: 1.1rem; font-size: 0.875rem; }
+    .info-list strong { display: block; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); margin-bottom: 0.25rem; }
+    .info-list a { font-weight: 600; text-decoration: none; color: var(--text); word-break: break-word; overflow-wrap: anywhere; }
+    .info-list a:hover { color: var(--link-hover); }
+    .trust-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .trust-chips span {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.65rem;
+      background: var(--accent-mist);
+      color: var(--link);
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .insurance-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.15rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .insurance-note h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text); margin-bottom: 0.35rem; }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, #e8eef4 0%, #dde6ef 100%);
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 3rem max(1.25rem, 5vw, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1.25rem, 5vw, env(safe-area-inset-left));
+      font-size: 0.8125rem;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    footer h4 { color: var(--link); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.85rem; font-family: 'Inter', sans-serif; font-weight: 600; }
+    footer a { color: var(--link); text-decoration: none; }
+    footer a:hover { color: var(--link-hover); }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.45rem; }
+    .footer-brand .logo { color: var(--text); display: inline-flex; margin-bottom: 0.65rem; align-items: center; }
+    .footer-brand .logo-img {
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(12, 74, 110, 0.15);
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: space-between; align-items: center;
+    }
+    @media (max-width: 520px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+      .review-hero { padding: 1.35rem 1.15rem; }
+      .review-actions { flex-direction: column; align-items: stretch; }
+      .review-actions a { text-align: center; padding: 0.65rem 1rem; min-height: 2.75rem; }
+    }
+
+    .sticky-mobile {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 350;
+      padding: 0.6rem max(1rem, env(safe-area-inset-left)) calc(0.6rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-right));
+      background: rgba(250, 249, 247, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .sticky-mobile .btn {
+      flex: 1;
+      max-width: 200px;
+      min-height: 2.75rem;
+      padding: 0.65rem 1rem;
+    }
+    @media (max-width: 640px) {
+      .sticky-mobile { display: flex; }
+      body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topbar" role="banner">
+    <span><strong>New patients welcome!</strong> Call <a href="tel:+15164859675">(516) 485-9675</a> to schedule your visit</span>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="Ultimate Smile Dental — Home">
+      <img class="logo-img" src="assets/logo-ultimate-smile.png" width="250" height="70" alt="" decoding="async" />
+      <span class="logo-text">Ultimate Smile Dental</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#meet-dr-sachdev">Meet Dr. Sachdev</a>
+      <a href="#our-office">Our Office</a>
+      <a href="#testimonials">Patient Testimonials</a>
+      <a href="#smile-gallery">Smile Gallery</a>
+      <a href="#happy-patients">Our Happy Patients</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-drawer" id="mobileNav" aria-hidden="true">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#meet-dr-sachdev">Meet Dr. Sachdev</a>
+    <a href="#our-office">Our Office</a>
+    <a href="#testimonials">Patient Testimonials</a>
+    <a href="#smile-gallery">Smile Gallery</a>
+    <a href="#happy-patients">Our Happy Patients</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+15164859675" class="btn btn-primary btn-block">Book Your Visit</a>
+  </nav>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-media-bg">
+        <video
+          class="hero-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          controls
+          preload="auto"
+          aria-label="Ultimate Smile Dental — office tour video (no sound, loops)"
+        >
+          <source src="assets/office-video.mp4" type="video/mp4" />
+          <a href="assets/office-video.mp4" download>Download office video</a>
+        </video>
+        <div class="hero-bg-scrim" aria-hidden="true"></div>
+      </div>
+      <div class="hero-center">
+        <div class="hero-copy">
+          <h1 class="hero-mainline">State of the art dentistry with a calming touch</h1>
+          <p class="hero-tagline">The smile you’ve <em>always</em> wanted</p>
+        </div>
+        <div class="hero-cta hero-address-card">
+          <span class="hero-address-label">Visit us</span>
+          <address class="hero-address-text">
+            400 Hempstead Tpke<br />
+            West Hempstead, NY 11552
+          </address>
+          <p class="hero-maps-link">
+            <a href="https://maps.app.goo.gl/Dw4VQjUx691yhbn77" target="_blank" rel="noopener">Google Maps</a>
+          </p>
+          <a class="hero-phone-link" href="tel:+15164859675">(516) 485-9675</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-head center">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Beautiful, Healthy Smiles —<br />for Every Age</h2>
+        <p class="section-sub">We care for your family’s smiles—from prevention to cosmetics—with a focus on conservative treatment and patient education.</p>
+      </div>
+      <div class="services-split">
+        <nav class="services-nav" aria-label="Dental services">
+          <ul class="services-list">
+            <li class="services-item">
+              <button type="button" class="services-nav-btn is-active" id="svc-btn-cleanings" aria-controls="detail-cleanings" aria-current="true" data-detail="detail-cleanings">Cleanings &amp; Prevention</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-cosmetic" aria-controls="detail-cosmetic" data-detail="detail-cosmetic">Cosmetic Dentistry</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-perio" aria-controls="detail-perio" data-detail="detail-perio">Periodontal (Gum) Care</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-resto" aria-controls="detail-resto" data-detail="detail-resto">Restorations</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-ortho" aria-controls="detail-ortho" data-detail="detail-ortho">Orthodontics &amp; Invisalign</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-pain-relief" aria-controls="detail-pain-relief" data-detail="detail-pain-relief">Dental Pain Relief</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-oral-surgery" aria-controls="detail-oral-surgery" data-detail="detail-oral-surgery">Oral Surgery</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-implants" aria-controls="detail-implants" data-detail="detail-implants">Dental Implants</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-dentures" aria-controls="detail-dentures" data-detail="detail-dentures">Dentures</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-digital" aria-controls="detail-digital" data-detail="detail-digital">Digital Technologies</button>
+            </li>
+            <li class="services-item">
+              <button type="button" class="services-nav-btn" id="svc-btn-urgent" aria-controls="detail-urgent" data-detail="detail-urgent">Urgent &amp; Emergency Care</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="services-detail-wrap" role="region" aria-live="polite" aria-label="Service description">
+          <article class="service-detail-block" id="detail-cleanings" aria-labelledby="svc-btn-cleanings">
+            <span class="tag">Foundation of health</span>
+            <h3>Cleanings &amp; Prevention</h3>
+            <p>Exams, cleanings, sealants, fluoride, digital X-rays, and home-care coaching. The ADA recommends regular checkups — we tailor your schedule to your risk and goals so small issues stay small.</p>
+          </article>
+          <article class="service-detail-block" id="detail-cosmetic" hidden aria-labelledby="svc-btn-cosmetic">
+            <span class="tag">Confidence</span>
+            <h3>Cosmetic Dentistry</h3>
+            <p>Whitening, bonding, veneers, lumineers, crowns, bridges, and more — so you can smile freely. We explain options clearly and help you choose what fits your lifestyle and budget.</p>
+          </article>
+          <article class="service-detail-block" id="detail-perio" hidden aria-labelledby="svc-btn-perio">
+            <span class="tag">Healthy gums</span>
+            <h3>Periodontal (Gum) Care</h3>
+            <p>Healthy gums support healthy teeth. We diagnose and treat gum disease, explain causes in plain language, and focus on long-term maintenance so your smile stays stable.</p>
+          </article>
+          <article class="service-detail-block" id="detail-resto" hidden aria-labelledby="svc-btn-resto">
+            <span class="tag">Lasting function</span>
+            <h3>Restorations</h3>
+            <p>Fillings, crowns, bridges, implants, and root canal therapy when needed — always with conservative, tooth-preserving judgment. We want lasting function and a natural look.</p>
+          </article>
+          <article class="service-detail-block" id="detail-ortho" hidden aria-labelledby="svc-btn-ortho">
+            <span class="tag">Straighter smiles</span>
+            <h3>Orthodontics &amp; Invisalign</h3>
+            <p>Clear aligners and orthodontic care for teens and adults. Straight teeth are easier to clean and can improve bite comfort.</p>
+          </article>
+          <article class="service-detail-block" id="detail-pain-relief" hidden aria-labelledby="svc-btn-pain-relief">
+            <span class="tag">Feel better fast</span>
+            <h3>Dental Pain Relief</h3>
+            <p>Toothaches, sensitivity, jaw pain, or swelling shouldn’t wait. We find the cause of your discomfort, explain it clearly, and treat it with the right care — from fillings and root canal therapy to adjustments for bite or grinding — so you can get out of pain and back to life. Call us if you’re hurting; we’ll prioritize getting you comfortable.</p>
+          </article>
+          <article class="service-detail-block" id="detail-oral-surgery" hidden aria-labelledby="svc-btn-oral-surgery">
+            <span class="tag">Surgical care</span>
+            <h3>Oral Surgery</h3>
+            <p>Sometimes a tooth needs to be gently removed or a small procedure is needed to keep your mouth healthy. We provide comfortable, in-office care, including extractions and wisdom teeth when needed. We’ll clearly explain your comfort options and give simple aftercare instructions to help you heal smoothly.</p>
+          </article>
+          <article class="service-detail-block" id="detail-implants" hidden aria-labelledby="svc-btn-implants">
+            <span class="tag">Permanent replacement</span>
+            <h3>Dental Implants</h3>
+            <p>Dental implants are a strong, natural-looking way to replace missing teeth. We evaluate your bone and gums, walk you through each step, and focus on long-term success — from single-tooth replacement to full-arch options when appropriate.</p>
+          </article>
+          <article class="service-detail-block" id="detail-dentures" hidden aria-labelledby="svc-btn-dentures">
+            <span class="tag">Comfort &amp; function</span>
+            <h3>Dentures</h3>
+            <p>Custom full and partial dentures to replace missing teeth, restore chewing comfort, and help you smile with confidence.</p>
+          </article>
+          <article class="service-detail-block" id="detail-digital" hidden aria-labelledby="svc-btn-digital">
+            <span class="tag">Precision &amp; clarity</span>
+            <h3>Digital Technologies</h3>
+            <p>We use <strong>digital X-rays</strong> for clear, low-radiation imaging and fast diagnosis, and <strong>intraoral scanners</strong> for comfortable digital impressions — no messy putty — so treatment planning is accurate and your visits stay efficient.</p>
+          </article>
+          <article class="service-detail-block" id="detail-urgent" hidden aria-labelledby="svc-btn-urgent">
+            <span class="tag">We’re here for you</span>
+            <h3>Urgent &amp; Emergency Care</h3>
+            <p>Tooth pain, broken teeth, or swelling? Call right away — we’ll advise you on next steps and get you seen as soon as we can.</p>
+            <a class="link-arrow" href="tel:+15164859675">Call (516) 485-9675</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="meet-dr-sachdev" aria-labelledby="meet-dr-sachdev-title">
+      <div class="section-head center">
+        <div class="section-label">Our Practice</div>
+        <h2 class="section-title" id="meet-dr-sachdev-title">Meet Dr. Sachdev</h2>
+      </div>
+      <div class="meet-doctor-split">
+        <figure class="meet-doctor-photo">
+          <img src="assets/dr-sachdev.png" width="973" height="1024" alt="Dr. Sachdev in white coat and blue scrubs, smiling" loading="lazy" decoding="async" />
+        </figure>
+        <div class="meet-doctor-body">
+          <p>This practice has been serving the community for over 20 years.</p>
+          <p>Dr. Sachdev is an accomplished dentist, with her dental education right here in Long Island at Stony Brook University, residency at Lutheran Hospital, followed by hundreds of hours of continuing education focused on cutting-edge advances in the world of dentistry and patient care.</p>
+          <p>Dr. Sachdev was also a teacher and an attending dentist/supervisor at Brookdale Hospital in Brooklyn, where she helped dental residents hone their clinical and patient management skills, and helped ensure that the next generation of dentists are not only proficient in dental procedures but also in human aspect of dental care.</p>
+          <p>Dr. Sachdev is a 4th generation dentist in her family, with her great grandfather being the first dentist from London, then her grandfather and her father. In India, her family has been known for practicing state-of-the-art dentistry, serving senior government officials and other celebrities. She brings the same dedication and professionalism to serve her patients in Long Island, as her great grandfather did 80–90 years ago.</p>
+          <p>Dr. Sachdev and her staff’s primary focus is on prevention and minimizing the need for complex dental procedures. She works with her patients to establish a comprehensive treatment plan that incorporates the patient’s dental needs and their economic situation, with the view to maximize the benefits of insurance coverage today while minimizing the need for complex expensive dental procedures tomorrow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="our-office" aria-labelledby="our-office-title">
+      <div class="section-head center">
+        <div class="section-label">Visit Us</div>
+        <h2 class="section-title" id="our-office-title">Our Office</h2>
+      </div>
+      <div class="office-mosaic-wrap">
+        <div class="office-mosaic" role="group" aria-label="Office photos from Google Maps listing">
+          <img src="assets/office/office-gmaps-01.jpg" width="450" height="600" alt="Street view of Ultimate Smile Dental building" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-02.jpg" width="450" height="600" alt="Ultimate Smile Dental office photo" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-03.jpg" width="800" height="536" alt="Ultimate Smile Dental office interior" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-04.jpg" width="800" height="536" alt="Ultimate Smile Dental reception or treatment area" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-05.jpg" width="800" height="536" alt="Ultimate Smile Dental office photo" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-06.jpg" width="800" height="536" alt="Ultimate Smile Dental office photo" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-07.jpg" width="800" height="536" alt="Ultimate Smile Dental office photo" loading="lazy" decoding="async" />
+          <img src="assets/office/office-gmaps-08.jpg" width="800" height="536" alt="Ultimate Smile Dental office photo" loading="lazy" decoding="async" />
+        </div>
+        <p class="office-photo-attrib">Same photos visitors see on our <a href="https://maps.app.goo.gl/Dw4VQjUx691yhbn77" target="_blank" rel="noopener">Google Maps</a> listing (street view and business photos). Imagery © Google and contributors.</p>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="section-head center">
+        <div class="section-label">Patient Testimonials</div>
+        <h2 class="section-title">Hear From Our Patients</h2>
+      </div>
+      <div class="testimonials-mirror">
+        <article class="testimonial-row testimonial-row--img-left">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/testimonial-anthony-2017.jpg" width="400" height="168" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I have been coming to Dr. Sachdev for over 10 years now. She is a great dentist and her staff is excellent.<br /> - Anthony M.</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/boazc.png" width="319" height="312" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>My oral hygiene is taken care by LI family dental care and Dr. Ashu Sachdev for last 7 years. My whole family visits LI family dental care on a regular basis. Doctor and the staff at the facility is very courteous, caring and efficient at all times. I recommeded this facility to my friend circle. The also are happy.</p>
+            <p>- Boaz Chacko</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-left">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/tammyf.png" width="396" height="195" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I’ve been coming to Dr. Sachdev for many years and she and her staff are always amazing professional treatment with a kind demeanor. Thank You!</p>
+            <p>- Tammy Franklin</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachdev-test3.jpg" width="552" height="101" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I come here to get excellent service from wonderful people. <br />- Jobin Joseph</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-left">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachdev-test2.jpg" width="425" height="275" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I like how you treat us and everybody. Long Island Family dental Care treats us very nice. They know what to do to take care of us. <br />- Domenica Cambala</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/test-sachdev.png" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>Before coming to this dental office, I was always afraid of going to the dentist. This doctor has made my experience with the dentist much better. I would definetly recommend this dental office. <br />- Edwin Molina</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-left">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachtest3.png" width="456" height="439" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I’ve really enjoyed coming to Long Island Family Dental Care. The staff is really nice, but the thing I enjoy most is that my time is never wasted. I’m usually in and out within an hour. Dr. Sachdev ensures that my tooth is well taken care of. I will definitely refer more people to this office. Thank you very much for the time and care provided to my teeth. <br />- Jacquelyn Koroma</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachtest2.png" width="459" height="423" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>Friendly &amp; caring staff. Dentist is professional and takes a conservative approach to the dental practice. The dentist is communicative and explains all dental issues and service to the satisfaction of the patient. <br />- Douglas Graber</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--text-then-img">
+          <div class="testimonial-body">
+            <p>Enjoy the staff, welcoming, professional and caring. Nothing bad to say thank you very much.</p>
+          </div>
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachtest1.png" width="477" height="254" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>- Heriberto Velez</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/sachtest4.png" width="470" height="500" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I brought my daughter to Dr. Sachdev when she was 6-7 years old. My daughter is now 16 and we absolutely love coming here. I always had a fear of dentists as a young girl but after seeing how Dr. Sachdev handled my daughter, I too become a regular patient. I proudly recommend Dr. Sachdev to those who ask for a dental referral and to those that do not ask. We love Dr. Sachdev!! She’s awesome!! <br />- Sherry Ricks</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--text-only">
+          <div class="testimonial-body">
+            <p>Dear Dr. Sachdev, <br />I can’t talk so I’ll write to say thank you very much. I didn’t feel a thing and I am very happy with your knowledge and professionalism. Thank you again. <br />- Susan Arce</p>
+          </div>
+        </article>
+        <hr class="testimonial-rule" />
+        <article class="testimonial-row testimonial-row--img-right">
+          <figure class="testimonial-figure">
+            <img src="assets/testimonials/antm.png" alt="Handwritten patient note" loading="lazy" decoding="async" />
+          </figure>
+          <div class="testimonial-body">
+            <p>I have been coming to Dr. Sachdev for over 10 years. She is a great dentist and her staff is excellent.<br />- Anthony M.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="smile-gallery" aria-labelledby="smile-gallery-title">
+      <div class="section-head center">
+        <h2 class="section-title" id="smile-gallery-title">Smile Gallery</h2>
+        <p class="section-sub">Before-and-after cases and smiles from patients we’ve had the pleasure to care for.</p>
+      </div>
+      <div class="smile-gallery-wrap">
+        <div class="smile-gallery-group">
+          <h3 class="smile-gallery-heading">Before &amp; after</h3>
+          <div class="smile-gallery-grid">
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/ba1-sachdev.JPG" alt="Implant" loading="lazy" decoding="async" />
+              <figcaption>Implant</figcaption>
+            </figure>
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/ba2-sachdev.JPG" alt="Implant" loading="lazy" decoding="async" />
+              <figcaption>Implant</figcaption>
+            </figure>
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/ba3-sachdev.JPG" alt="Invisalign and Zoom whitening" loading="lazy" decoding="async" />
+              <figcaption>Invisalign and Zoom whitening</figcaption>
+            </figure>
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/sachdev1.jpg" alt="Complete Dentures" loading="lazy" decoding="async" />
+              <figcaption>Complete Dentures</figcaption>
+            </figure>
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/sachdevb1.jpg" alt="Zoom whitening" loading="lazy" decoding="async" />
+              <figcaption>Zoom whitening</figcaption>
+            </figure>
+            <figure class="smile-gallery-card">
+              <img src="assets/smile-gallery/basach1.jpg" alt="Cosmetic Dentistry" loading="lazy" decoding="async" />
+              <figcaption>Cosmetic Dentistry</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="happy-patients" class="smile-gallery-subsection" aria-labelledby="happy-patients-title">
+      <div class="smile-gallery-wrap">
+        <div class="section-head center">
+          <h2 class="section-title" id="happy-patients-title">Our Happy Patients</h2>
+          <p class="section-sub">Real smiles from patients we’ve been honored to treat.</p>
+        </div>
+        <div class="smile-gallery-grid">
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/IMG_1007.JPG" alt="Happy patient smile" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/sach1.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/sach2.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/sach3.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/sach5.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/1111111111.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/22222222222.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/33333333333333.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+          <figure class="smile-gallery-card">
+            <img src="assets/smile-gallery/444444444444.jpg" alt="Patient smile result" loading="lazy" decoding="async" />
+            <figcaption>Happy patients</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title font-display">Contact Us</h2>
+          <p class="section-sub">Ready for a healthier smile? Call or email us — we’ll get back to you promptly.</p>
+          <ul class="info-list">
+            <li><strong>Address</strong><a href="https://maps.app.goo.gl/Dw4VQjUx691yhbn77" target="_blank" rel="noopener">400 Hempstead Tpke, West Hempstead, NY 11552</a></li>
+            <li><strong>Phone</strong><a href="tel:+15164859675">(516) 485-9675</a></li>
+            <li><strong>Email</strong><a href="mailto:lifamilydentalcare@gmail.com">lifamilydentalcare@gmail.com</a></li>
+            <li><strong>Hours</strong>Call for appointment availability</li>
+          </ul>
+          <div class="trust-chips">
+            <span>New patients always welcome</span>
+            <span>Insurance accepted — call to verify</span>
+            <span>Emergency care — call immediately</span>
+          </div>
+          <div class="insurance-note">
+            <h4>Insurance &amp; Payment</h4>
+            <p>We accept most major dental insurance plans. Call us with your insurance information and we’ll be happy to verify your coverage and discuss payment options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#home" aria-label="Ultimate Smile Dental — Home">
+          <img class="logo-img" src="assets/logo-ultimate-smile.png" width="250" height="70" alt="" decoding="async" />
+          <span class="logo-text">Ultimate Smile Dental</span>
+        </a>
+        <p>Family &amp; cosmetic dentistry in West Hempstead, NY. We love our patients like family — gentle care, one patient at a time.</p>
+        <p style="margin-top:0.75rem"><a href="tel:+15164859675">(516) 485-9675</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#meet-dr-sachdev">Meet Dr. Sachdev</a></li>
+          <li><a href="#our-office">Our Office</a></li>
+          <li><a href="#smile-gallery">Smile Gallery</a></li>
+          <li><a href="#happy-patients">Our Happy Patients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Cleanings &amp; Prevention</a></li>
+          <li><a href="#services">Cosmetic Dentistry</a></li>
+          <li><a href="#services">Restorations</a></li>
+          <li><a href="#services">Orthodontics</a></li>
+          <li><a href="#services">Dental Pain Relief</a></li>
+          <li><a href="#services">Oral Surgery</a></li>
+          <li><a href="#services">Dental Implants</a></li>
+          <li><a href="#services">Dentures</a></li>
+          <li><a href="#services">Digital Technologies</a></li>
+          <li><a href="#services">Emergency Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Office Hours</h4>
+        <ul>
+          <li>Monday – Friday — By appointment</li>
+          <li>Saturday — By appointment</li>
+          <li>Sunday — Closed</li>
+        </ul>
+        <p style="margin-top:1rem">400 Hempstead Tpke<br />West Hempstead, NY 11552</p>
+        <p><a href="mailto:lifamilydentalcare@gmail.com">lifamilydentalcare@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ultimate Smile Dental. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Accessibility</a></span>
+    </div>
+  </footer>
+
+  <div class="sticky-mobile" role="navigation" aria-label="Quick contact">
+    <a class="btn btn-outline" href="tel:+15164859675">Call Now</a>
+    <a class="btn btn-primary" href="#contact">Book Visit</a>
+  </div>
+
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('menuBtn');
+      var mobileNav = document.getElementById('mobileNav');
+      function closeMenu() {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      function openMenu() {
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      menuBtn.addEventListener('click', function () {
+        if (mobileNav.classList.contains('open')) closeMenu(); else openMenu();
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      var heroV = document.querySelector('.hero-bg-video');
+      if (heroV) {
+        heroV.muted = true;
+        heroV.volume = 0;
+        heroV.addEventListener('volumechange', function () {
+          heroV.muted = true;
+          heroV.volume = 0;
+        });
+        var tryPlay = function () {
+          var p = heroV.play();
+          if (p && typeof p.catch === 'function') p.catch(function () {});
+        };
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          heroV.removeAttribute('autoplay');
+          heroV.pause();
+          try { heroV.currentTime = 0; } catch (e) {}
+        } else {
+          if (heroV.readyState >= 2) tryPlay();
+          else heroV.addEventListener('canplay', tryPlay, { once: true });
+        }
+      }
+
+      var serviceBtns = document.querySelectorAll('.services-nav-btn');
+      var servicePanels = document.querySelectorAll('.service-detail-block');
+      if (serviceBtns.length && servicePanels.length) {
+        function showServiceDetail(id) {
+          servicePanels.forEach(function (panel) {
+            panel.hidden = panel.id !== id;
+          });
+          serviceBtns.forEach(function (b) {
+            var on = b.getAttribute('data-detail') === id;
+            b.classList.toggle('is-active', on);
+            if (on) b.setAttribute('aria-current', 'true');
+            else b.removeAttribute('aria-current');
+          });
+        }
+        var useHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        serviceBtns.forEach(function (btn) {
+          var id = btn.getAttribute('data-detail');
+          if (!id) return;
+          btn.addEventListener('click', function () { showServiceDetail(id); });
+          btn.addEventListener('focus', function () { showServiceDetail(id); });
+          if (useHover) btn.addEventListener('mouseenter', function () { showServiceDetail(id); });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
