@@ -901,6 +901,12 @@
     @media (max-width: 640px) {
       .sticky-mobile { display: flex; }
       body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); }
+      .sticky-mobile.sticky-mobile--at-contact .btn-primary {
+        display: none;
+      }
+      .sticky-mobile.sticky-mobile--at-contact .btn-outline {
+        max-width: 280px;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1482,6 +1488,29 @@
           btn.addEventListener('focus', function () { showServiceDetail(id); });
           if (useHover) btn.addEventListener('mouseenter', function () { showServiceDetail(id); });
         });
+      }
+
+      var contactSection = document.getElementById('contact');
+      var stickyBar = document.querySelector('.sticky-mobile');
+      if (contactSection && stickyBar && window.IntersectionObserver) {
+        var mq = window.matchMedia('(max-width: 640px)');
+        var contactObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              stickyBar.classList.toggle('sticky-mobile--at-contact', entry.isIntersecting);
+            });
+          },
+          { threshold: 0.15 }
+        );
+        function bindContactObs() {
+          if (mq.matches) contactObs.observe(contactSection);
+          else {
+            contactObs.unobserve(contactSection);
+            stickyBar.classList.remove('sticky-mobile--at-contact');
+          }
+        }
+        bindContactObs();
+        mq.addEventListener('change', bindContactObs);
       }
     })();
   </script>
