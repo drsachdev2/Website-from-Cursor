@@ -555,6 +555,7 @@
       color: var(--text-muted);
       line-height: 1.65;
       margin-bottom: 1.1rem;
+      text-align: justify;
     }
     .service-detail-block a.link-arrow {
       font-size: 0.875rem;
@@ -566,7 +567,27 @@
     @media (max-width: 720px) {
       .services-split {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 0;
+      }
+      .services-detail-wrap {
+        display: none;
+      }
+      .services-item .service-detail-block {
+        padding: 0 1rem 1.15rem;
+        background: var(--bg-muted);
+        border-top: 1px solid var(--border);
+      }
+      .services-item .service-detail-block .tag {
+        margin-top: 0.15rem;
+      }
+      .services-item .service-detail-block h3 {
+        display: none;
+      }
+      .services-item:has(.services-nav-btn.is-active) {
+        background: var(--accent-mist);
+      }
+      .services-item:has(.services-nav-btn.is-active) .service-detail-block {
+        background: var(--accent-mist);
       }
     }
 
@@ -582,6 +603,11 @@
       max-width: 1100px;
       margin: 0 auto;
       align-items: start;
+    }
+    .meet-doctor-photos {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
     .meet-doctor-photo {
       margin: 0;
@@ -601,6 +627,7 @@
       color: var(--text-muted);
       line-height: 1.65;
       margin-bottom: 1rem;
+      text-align: justify;
     }
     .meet-doctor-body p:last-child {
       margin-bottom: 0;
@@ -610,7 +637,7 @@
         grid-template-columns: 1fr;
         gap: 1.75rem;
       }
-      .meet-doctor-photo {
+      .meet-doctor-photos {
         max-width: 360px;
         margin-left: auto;
         margin-right: auto;
@@ -723,6 +750,7 @@
     }
     .testimonials-mirror .testimonial-body p {
       margin: 0 0 0.5rem;
+      text-align: justify;
     }
     .testimonials-mirror .testimonial-rule {
       border: none;
@@ -1135,9 +1163,14 @@
         <h2 class="section-title" id="meet-dr-sachdev-title">Meet Dr. Sachdev</h2>
       </div>
       <div class="meet-doctor-split">
-        <figure class="meet-doctor-photo">
-          <img src="assets/dr-sachdev.png" width="973" height="1024" alt="Dr. Sachdev in white coat and blue scrubs, smiling" loading="lazy" decoding="async" />
-        </figure>
+        <div class="meet-doctor-photos">
+          <figure class="meet-doctor-photo">
+            <img src="assets/dr-sachdev-new.jpeg" width="1780" height="2555" alt="Dr. Ashu Sachdev, DDS" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="meet-doctor-photo">
+            <img src="assets/Team.jpeg" width="2096" height="2437" alt="Ultimate Smile Dental team" loading="lazy" decoding="async" />
+          </figure>
+        </div>
         <div class="meet-doctor-body">
           <p>This practice has been serving the community for over 20 years.</p>
           <p>Dr. Sachdev is an accomplished dentist, with her dental education right here in Long Island at Stony Brook University, residency at Lutheran Hospital, followed by hundreds of hours of continuing education focused on cutting-edge advances in the world of dentistry and patient care.</p>
@@ -1502,7 +1535,31 @@
 
       var serviceBtns = document.querySelectorAll('.services-nav-btn');
       var servicePanels = document.querySelectorAll('.service-detail-block');
-      if (serviceBtns.length && servicePanels.length) {
+      var servicesDetailWrap = document.querySelector('.services-detail-wrap');
+      var mobileServicesMq = window.matchMedia('(max-width: 720px)');
+      var servicePanelOrder = Array.prototype.map.call(servicePanels, function (p) { return p.id; });
+
+      if (serviceBtns.length && servicePanels.length && servicesDetailWrap) {
+        function layoutServicePanels() {
+          if (mobileServicesMq.matches) {
+            serviceBtns.forEach(function (btn) {
+              var id = btn.getAttribute('data-detail');
+              var panel = document.getElementById(id);
+              var item = btn.closest('.services-item');
+              if (panel && item && panel.parentElement !== item) {
+                item.appendChild(panel);
+              }
+            });
+          } else {
+            servicePanelOrder.forEach(function (id) {
+              var panel = document.getElementById(id);
+              if (panel && panel.parentElement !== servicesDetailWrap) {
+                servicesDetailWrap.appendChild(panel);
+              }
+            });
+          }
+        }
+
         function showServiceDetail(id) {
           servicePanels.forEach(function (panel) {
             panel.hidden = panel.id !== id;
@@ -1514,11 +1571,24 @@
             else b.removeAttribute('aria-current');
           });
         }
+
+        layoutServicePanels();
+        if (typeof mobileServicesMq.addEventListener === 'function') {
+          mobileServicesMq.addEventListener('change', layoutServicePanels);
+        } else if (typeof mobileServicesMq.addListener === 'function') {
+          mobileServicesMq.addListener(layoutServicePanels);
+        }
+
         var useHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
         serviceBtns.forEach(function (btn) {
           var id = btn.getAttribute('data-detail');
           if (!id) return;
-          btn.addEventListener('click', function () { showServiceDetail(id); });
+          btn.addEventListener('click', function () {
+            showServiceDetail(id);
+            if (mobileServicesMq.matches) {
+              btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          });
           btn.addEventListener('focus', function () { showServiceDetail(id); });
           if (useHover) btn.addEventListener('mouseenter', function () { showServiceDetail(id); });
         });
