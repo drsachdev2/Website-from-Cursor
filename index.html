@@ -256,7 +256,7 @@
       border-bottom: 1px solid var(--border);
       min-height: min(91vh, 1066px);
     }
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 769px) {
       .hero {
         min-height: min(88vh, 920px);
         min-height: min(88svh, 920px);
@@ -397,25 +397,51 @@
       color: var(--link-hover);
       text-decoration: underline;
     }
-    @media (max-width: 640px) {
+    /* Mobile / narrow: video on top, copy below (no text-over-video overlap) */
+    @media (max-width: 768px) {
       .hero {
-        min-height: min(82vh, 720px);
-        min-height: min(82svh, 720px);
-        padding-top: calc(var(--topbar-h) + var(--header-h) + 1.25rem);
-        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding-top: calc(var(--topbar-h) + var(--header-h));
+        padding-bottom: 2rem;
+      }
+      .hero-media-bg {
+        position: relative;
+        inset: auto;
+        flex: 0 0 auto;
+        order: 1;
+        width: 100%;
+      }
+      .hero-bg-video {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        max-height: min(52vh, 420px);
+        max-height: min(52svh, 420px);
       }
       .hero-center {
+        order: 2;
+        flex: 0 0 auto;
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
+        padding-top: 1.5rem;
         padding-left: max(1rem, env(safe-area-inset-left), 5vw);
         padding-right: max(1rem, env(safe-area-inset-right), 5vw);
         gap: 1.5rem;
+        background: var(--bg);
       }
       .hero-copy {
         max-width: 100%;
         padding-right: 0;
         margin-right: 0;
         text-align: left;
+      }
+      .hero-mainline,
+      .hero-tagline {
+        text-shadow: none;
       }
       .hero-center .hero-cta {
         align-self: stretch;
@@ -425,6 +451,21 @@
       }
       .hero-address-card {
         text-align: left;
+      }
+      .hero-address-card .hero-address-label,
+      .hero-address-card .hero-address-text,
+      .hero-address-card .hero-maps-link a,
+      .hero-address-card .hero-phone-link {
+        text-shadow: none;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero {
+        padding-bottom: 1.5rem;
+      }
+      .hero-center {
+        padding-top: 1.25rem;
+        gap: 1.25rem;
       }
       .hero-address-card .hero-address-label {
         font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
